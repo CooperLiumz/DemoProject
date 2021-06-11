@@ -1,0 +1,99 @@
+﻿error = Error
+
+common_err_001 = Incorrect Parameter
+common_err_002 = Missing Parameters
+common_err_003 = The Login Info Has Expired
+common_err_004 = Another Device Has Logged In This Account
+common_err_005 = No Permission
+common_err_006 = Service Can Not Be Empty
+common_err_007 = Token Can Not Be Empty
+common_err_008 = Failed To Get Service Instance
+common_err_009 = Please Purchase This Function First
+
+project_err_002 = Project Not Exist
+
+error_workflow_step = Error,Please Follow The Instruction To Handle The Recognition
+error_workflow_marker = Error,Please Follow The Tips To Identify The Correct Picture
+error_tango_place = Error, Place Model First
+error_tango_load = Error, Please Load Model First
+error_tango_already_load_project = Error, Please Place Downloaded Model First
+
+tips0 = Create Company On PC For More Functions
+tips1 = Login AH Clold On PC To Edit Projects
+tips2 = Click 3D Resource For 1s To Adjust Position, Angle Or Size
+tips3 = Make Sure To Keep Enough Light In The Room When Using Titan Function
+tips4 = AH Cloud Platform, Bring You To The AR World
+
+
+confirm = Confirm
+cancel = Cancel
+warning = Warning
+import_error = Error During Importing Model
+download_error = Download Error! 
+confirm_delete = Confirm Delete?
+id_null = Please Input Project Id
+already_download = Already Download
+id_error = ID Error
+scene_id_input = Please Input Project Id
+network_not_reachable = Disconnect
+network_error = Network Error
+select_scene_load = No Project\nSearch Project Id To Download
+project_id = Project Id
+project_type0 = Manual Tutorial
+project_type1 = 图片识别
+project_type2 = 3D Exhibit
+project_type3 = 轮廓识别
+project_type4 = Martin识别
+project_3dLib = 3D Library
+project_markerLib = Recognition Library
+loading_tip = No Data Consumption During Loading Process
+step_count = Step Count：
+download = Download
+load = Load
+update = Update
+search = Search
+delete = Delete
+project_desc = Project Description
+model_desc = Model Description
+marker_count = {0}Image To Recognize
+photo_success = Photo Success
+capture_success = Screenshot Success
+capture_error = Screenshot Fail
+desc_nothing = Nothing
+start_interact = 分享我的项目？
+end_interact = 结束分享？
+
+close = Close
+save_as = Save
+project_editable = 此预案不可编辑！
+project_editable_self = 只可编辑自己的预案！
+project_interact = 只有空间识别可以互动
+upload_photo = 您的照片已保存到本地，是否要发送的云端？
+upload_success = 上传成功
+fault_tree = 故障检查
+
+medic_title0 = ""
+medic_title1 = 标注
+medic_title2 = 测量
+medic_title3 = 区域
+medic_title4 = 工具
+medic_measure = 在3D模型上点击放置测量点，以测量两点直线间距
+medic_area1 = 标记1
+medic_area2 = 标记2
+medic_area3 = 标记3
+medic_measure_tips = 只能测同一物体
+mdeic_confirm_save_step = 是否保存修改？
+mdeic_confirm_clear = 确定清除模型外的所有标记？
+mdeic_confirm_save_project = 尚未保存修改的预案，确定关闭？
+mdeic_confirm_save_project_null = 没有需要保存的标记
+medic_reference_model_skull = 头骨 
+medic_reference_model_spine = 脊柱
+medic_reference_model_artery = 血管
+medic_reference_model_femur = 腿骨
+
+medic_save_success = 教程保存成功！
+medic_save_as_title = 另存为
+medic_save_as_format = {0}-副本
+medic_save_as_name_lgh = 名字长度应为2-32个字符
+medic_save_as_name_same = 名字重复
+medic_marker_tips = 请放置在3D模型上

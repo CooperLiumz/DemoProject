@@ -1,0 +1,99 @@
+﻿error = 错误
+
+common_err_001 = 参数异常
+common_err_002 = 缺少参数
+common_err_003 = 登录已过期
+common_err_004 = 其他设备登录
+common_err_005 = 无权限
+common_err_006 = 服务不能为空
+common_err_007 = Token 不能为空
+common_err_008 = 获取服务实例失败
+common_err_009 = 没有购买此产品包
+
+project_err_002 = 没有该项目
+
+error_workflow_step = 错误，请按步骤进行识别操作
+error_workflow_marker = 错误，请按提示识别正确的图片
+error_tango_place = 错误，请先放置模型
+error_tango_load = 错误，请先加载模型
+error_tango_already_load_project = 错误，请先放置已下载模型
+
+tips0 = 在PC端完成企业创建，可以使用更多功能。
+tips1 = 可登录AH Cloud PC端编辑各类工作项目。
+tips2 = 点击3D素材超过1秒，可以调整位置，角度和大小。
+tips3 = 当您使用Titan（三维）功能时，请保持室内光线充足。
+tips4 = 使用AH Cloud平台服务，带您进入AR的世界。
+
+
+confirm = 确认
+cancel = 取消
+warning = 提示
+import_error = 导入模型出错，请检查并更新场景!
+download_error = 下载错误！ 
+confirm_delete = 确认删除 ?
+id_null = 请输入场景编号!
+already_download = 已下载过当前场景! 无需重新下载 ！
+id_error = ID错误!
+scene_id_input = 请输入场景编号
+network_not_reachable = 断开连接
+network_error = 网络错误
+select_scene_load = 暂无项目\n搜索项目代码进行下载
+project_id = 项目代码
+project_type0 = 手动教程
+project_type1 = 图片识别
+project_type2 = 空间识别
+project_type3 = 轮廓识别
+project_type4 = Martin识别
+project_3dLib = 3D素材库
+project_markerLib = 识别库
+loading_tip = 加载过程中不消耗流量
+step_count = 内容步骤数：
+download = 下载
+load = 加载
+update = 更新
+search = 搜索
+delete = 删除
+project_desc = 项目描述
+model_desc = 模型描述
+marker_count = 共{0}个识别图
+photo_success = 拍照成功
+capture_success = 截图成功
+capture_error = 截图失败
+desc_nothing = 暂无
+start_interact = 分享我的项目？
+end_interact = 结束分享？
+
+close = 关闭
+save_as = 保存
+project_editable = 此预案不可编辑！
+project_editable_self = 只可编辑自己的预案！
+project_interact = 只有空间识别可以互动
+upload_photo = 您的照片已保存到本地，是否要发送的云端？
+upload_success = 上传成功
+fault_tree = 故障检查
+
+medic_title0 = ""
+medic_title1 = 标注
+medic_title2 = 测量
+medic_title3 = 区域
+medic_title4 = 工具
+medic_measure = 在3D模型上点击放置测量点，以测量两点直线间距
+medic_area1 = 标记1
+medic_area2 = 标记2
+medic_area3 = 标记3
+medic_measure_tips = 只能测同一物体
+mdeic_confirm_save_step = 是否保存修改？
+mdeic_confirm_clear = 确定清除模型外的所有标记？
+mdeic_confirm_save_project = 尚未保存修改的预案，确定关闭？
+mdeic_confirm_save_project_null = 没有需要保存的标记
+medic_reference_model_skull = 头骨 
+medic_reference_model_spine = 脊柱
+medic_reference_model_artery = 血管
+medic_reference_model_femur = 腿骨
+
+medic_save_success = 教程保存成功！
+medic_save_as_title = 另存为
+medic_save_as_format = {0}-副本
+medic_save_as_name_lgh = 名字长度应为2-32个字符
+medic_save_as_name_same = 名字重复
+medic_marker_tips = 请放置在3D模型上
