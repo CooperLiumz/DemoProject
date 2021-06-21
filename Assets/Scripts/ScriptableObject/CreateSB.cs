@@ -1,8 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class TestSB : ScriptableObject
+[CreateAssetMenu]
+public class CreateSB : ScriptableObject
 {
+
     
 }
+
+
+
