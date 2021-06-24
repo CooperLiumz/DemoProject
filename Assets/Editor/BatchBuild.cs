@@ -44,6 +44,11 @@ public class BatchBuild : EditorWindow
 
     private void OnGUI ()
     {
+        if (Event.current.type == EventType.KeyDown || Event.current.type == EventType.KeyUp)
+        {
+            return;
+        }
+
         scrollPos = EditorGUILayout.BeginScrollView (scrollPos);
 
         GUILayout.Space (5);
@@ -187,7 +192,9 @@ public class BatchBuild : EditorWindow
 
             MoveAudio (_stream , _src);
             DeleteStreamingAssetAudio (_stream);
-        }       
+        }
+
+        EditorBuildSettings.scenes = cacheScenes.ToArray ();
     }
 
     void CopyAudioToStreamingAsset (string _srcdir , string _dstdir)
