@@ -11,67 +11,29 @@ public class BatchBuild : EditorWindow
 
     private Vector2 scrollPos;
 
-    static bool isRelease;
+    bool isRelease;
 
-    static bool loadExternalAudio;
+    bool loadExternalAudio;
 
     //得到工程中所有场景名称
-    static string[] targetScenes = null;
+    EditorBuildSettingsScene[] targetScenes = null;
 
-    static string[] a_targetScenes = new string[] {
-        "StartUp",
-        "Loading",
-        "Login",
-        "Guide",
-        "MainMenu",
-        "i3MainA",
-        "i3Main_A_RepairSummary",
+    string[] a_targetScenes = new string[] {
+        "Assets/Scenes/A.unity",
     };
 
-    static string[] b_targetScenes = new string[] {
-        "StartUp",
-        "Loading",
-        "Login",
-        "Guide",
-        "MainMenu",
-        "i3MainB",
-        "i3Main_B_RepairSummary",
+    string[] b_targetScenes = new string[] {
+        "Assets/Scenes/B.unity",
     };
 
-    static string[] c_targetScenes = new string[] {
-        "StartUp",
-        "Loading",
-        "Login",
-        "Guide",
-        "MainMenu",
-        "I12_C",
-        "I12_C_RepairSummary",
+    string[] c_targetScenes = new string[] {
+       "Assets/Scenes/C.unity",
     };
 
-    static string[] d_targetScenes = new string[] {
-        "StartUp",
-        "Loading",
-        "Login",
-        "Guide",
-        "MainMenu",
-        "I12_D",
-        "I12_D_RepairSummary",
+    string[] d_targetScenes = new string[] {
+        "Assets/Scenes/D.unity",
     };
-
-    static string[] i01_wxgy_targetScenes = new string[] {
-        "StartUp",
-        "Loading",
-        "Login",
-        "i3Ani",
-    };
-
-    static string[] i12_wxgy_targetScenes = new string[] {
-        "StartUp",
-        "Loading",
-        "Login",
-        "I12Ani",
-    };
-
+    
 
     [MenuItem ("Window/一键打包")]
     static void OpenWindow ()
@@ -101,12 +63,7 @@ public class BatchBuild : EditorWindow
         if (GUILayout.Button ("A"))
         {
             BuildA ();
-        }
-
-        if (GUILayout.Button ("A Hub"))
-        {
-            BuildA (true);
-        }
+        }       
 
         EditorGUILayout.EndHorizontal ();
 
@@ -117,11 +74,6 @@ public class BatchBuild : EditorWindow
         if (GUILayout.Button ("B"))
         {
             BuildB ();
-        }
-
-        if (GUILayout.Button ("B Hub"))
-        {
-            BuildB (true);
         }
 
         EditorGUILayout.EndHorizontal ();
@@ -135,11 +87,6 @@ public class BatchBuild : EditorWindow
             BuildC ();
         }
 
-        if (GUILayout.Button ("C Hub"))
-        {
-            BuildC (true);
-        }
-
         EditorGUILayout.EndHorizontal ();
 
         GUILayout.Space (5);
@@ -151,69 +98,15 @@ public class BatchBuild : EditorWindow
             BuildD ();
         }
 
-        if (GUILayout.Button ("D Hub"))
-        {
-            BuildD (true);
-        }
-
         EditorGUILayout.EndHorizontal ();
 
-        GUILayout.Space (5);
-
-        EditorGUILayout.BeginHorizontal ();
-
-        if (GUILayout.Button ("I01 WXGY"))
-        {
-            BuildI01WXGY ();
-        }
-
-        if (GUILayout.Button ("I01 WXGY Hub"))
-        {
-            BuildI01WXGY (true);
-        }
-
-        EditorGUILayout.EndHorizontal ();
-
-        GUILayout.Space (5);
-
-        EditorGUILayout.BeginHorizontal ();
-
-        if (GUILayout.Button ("I12 WXGY"))
-        {
-            BuildI12WXGY ();
-        }
-
-        if (GUILayout.Button ("I12 WXGY Hub"))
-        {
-            BuildI12WXGY (true);
-        }
-
-        EditorGUILayout.EndHorizontal ();
-
-        GUILayout.Space (5);
+        GUILayout.Space (5); 
 
         EditorGUILayout.BeginHorizontal ();
 
         if (GUILayout.Button ("All"))
         {
             BuildAll ();
-        }
-
-        if (GUILayout.Button ("All Hub"))
-        {
-            BuildAll (true);
-        }
-
-        EditorGUILayout.EndHorizontal ();
-
-        GUILayout.Space (5);
-
-        EditorGUILayout.BeginHorizontal ();
-
-        if (GUILayout.Button ("All & Hub"))
-        {
-            BuildAll ();
-            BuildAll (true);
         }
 
         EditorGUILayout.EndHorizontal ();
@@ -226,75 +119,55 @@ public class BatchBuild : EditorWindow
 
     //一系列批量build的操作
     // [MenuItem ("BatchBuild/Build A")]
-    static void BuildA (bool startFromHub = false)
+    void BuildA ()
     {
         BuildStart ();
 
-        BulidTarget ("A", startFromHub);
+        BulidTarget ("A");
 
         BuildEnd ();
     }
 
-    static void BuildB (bool startFromHub = false)
+    void BuildB ()
     {
         BuildStart ();
 
-        BulidTarget ("B" , startFromHub);
+        BulidTarget ("B");
 
         BuildEnd ();
     }
 
-    static void BuildC (bool startFromHub = false)
+    void BuildC ()
     {
         BuildStart ();
 
-        BulidTarget ("C" , startFromHub);
+        BulidTarget ("C");
 
         BuildEnd ();
     }
 
-    static void BuildD (bool startFromHub = false)
+    void BuildD ()
     {
         BuildStart ();
 
-        BulidTarget ("D" , startFromHub);
+        BulidTarget ("D");
 
         BuildEnd ();
     }
 
-    static void BuildI01WXGY (bool startFromHub = false)
+    void BuildAll ()
     {
         BuildStart ();
 
-        BulidTarget ("I01WXGY" , startFromHub);
+        BulidTarget ("A");
+        BulidTarget ("B");
+        BulidTarget ("C");
+        BulidTarget ("D");
 
         BuildEnd ();
     }
 
-    static void BuildI12WXGY (bool startFromHub = false)
-    {
-        BuildStart ();
-
-        BulidTarget ("I12WXGY" , startFromHub);
-
-        BuildEnd ();
-    }
-
-    static void BuildAll (bool startFromHub = false)
-    {
-        BuildStart ();
-
-        BulidTarget ("A" , startFromHub);
-        BulidTarget ("B" , startFromHub);
-        BulidTarget ("C" , startFromHub);
-        BulidTarget ("D" , startFromHub);
-        BulidTarget ("I01WXGY" , startFromHub);
-        BulidTarget ("I12WXGY" , startFromHub);
-
-        BuildEnd ();
-    }
-
-    static void BuildStart ()
+    void BuildStart ()
     {
         if (loadExternalAudio)
         {
@@ -305,7 +178,7 @@ public class BatchBuild : EditorWindow
         }       
     }
 
-    static void BuildEnd ()
+    void BuildEnd ()
     {
         if (loadExternalAudio)
         {
@@ -317,7 +190,7 @@ public class BatchBuild : EditorWindow
         }       
     }
 
-    static void CopyAudioToStreamingAsset (string _srcdir , string _dstdir)
+    void CopyAudioToStreamingAsset (string _srcdir , string _dstdir)
     {
         if (!Directory.Exists (_dstdir))
         {
@@ -347,7 +220,7 @@ public class BatchBuild : EditorWindow
             CopyAudioToStreamingAsset (s , Path.Combine (_dstdir , Path.GetFileName (s)));
         }
     }
-    static void CopyAudioToTgtDir (string _srcdir , string _dstdir)
+    void CopyAudioToTgtDir (string _srcdir , string _dstdir)
     {
         if (!Directory.Exists (_dstdir))
         {
@@ -378,7 +251,7 @@ public class BatchBuild : EditorWindow
         }
     }
 
-    static void DeleteResourceAudio (string _srcdir)
+    void DeleteResourceAudio (string _srcdir)
     {
         foreach (var s in Directory.GetDirectories (_srcdir))
         {
@@ -387,12 +260,12 @@ public class BatchBuild : EditorWindow
         }
     }
 
-    static void DeleteStreamingAssetAudio (string _srcdir)
+    void DeleteStreamingAssetAudio (string _srcdir)
     {
         Directory.Delete (_srcdir , true);
     }
 
-    static void MoveAudio (string _srcdir , string _dstdir)
+    void MoveAudio (string _srcdir , string _dstdir)
     {
         if (!Directory.Exists (_dstdir))
         {
@@ -426,7 +299,7 @@ public class BatchBuild : EditorWindow
     }
 
     //这里封装了一个简单的通用方法。
-    static void BulidTarget (string targetName , bool startFromHub = false)
+    void BulidTarget (string targetName)
     {
         string target_dir = null;
 
@@ -437,12 +310,7 @@ public class BatchBuild : EditorWindow
 
         
         target_dir = applicationPath + "/Output/"+ targetName;
-
-        if (startFromHub)
-        {
-            target_dir = target_dir + "_Hub";
-        }
-
+        
         targetGroup = BuildTargetGroup.Standalone;
 
         //每次build删除之前的残留
@@ -462,14 +330,14 @@ public class BatchBuild : EditorWindow
                 //PlayerSettings.bundleVersion = "v0.0.1";
                 //PlayerSettings.SetScriptingDefineSymbolsForGroup (targetGroup , "UC");
 
-                targetScenes = GetEditorScenes (a_targetScenes);
+                targetScenes = SetBuildScenes (a_targetScenes);
                 break;
             case "B":
                 //PlayerSettings.applicationIdentifier = "com.game.uc";
                 //PlayerSettings.bundleVersion = "v0.0.1";
 
                 PlayerSettings.applicationIdentifier = "com.lnv.bmw_b";
-                targetScenes = GetEditorScenes (b_targetScenes);
+                targetScenes = SetBuildScenes (b_targetScenes);
 
                 break;
             case "C":
@@ -477,7 +345,7 @@ public class BatchBuild : EditorWindow
                 //PlayerSettings.bundleVersion = "v0.0.1";
                 //PlayerSettings.SetScriptingDefineSymbolsForGroup (targetGroup , "CMCC");
                 PlayerSettings.applicationIdentifier = "com.lnv.bmw_c";
-                targetScenes = GetEditorScenes (c_targetScenes);
+                targetScenes = SetBuildScenes (c_targetScenes);
 
                 break;
             case "D":
@@ -485,26 +353,9 @@ public class BatchBuild : EditorWindow
                 //PlayerSettings.bundleVersion = "v0.0.1";
                 //PlayerSettings.SetScriptingDefineSymbolsForGroup (targetGroup , "CMCC");
                 PlayerSettings.applicationIdentifier = "com.lnv.bmw_d";
-                targetScenes = GetEditorScenes (d_targetScenes);
+                targetScenes = SetBuildScenes (d_targetScenes);
 
-                break;
-            case "I01WXGY":
-                //PlayerSettings.applicationIdentifier = "com.game.cmcc";
-                //PlayerSettings.bundleVersion = "v0.0.1";
-                //PlayerSettings.SetScriptingDefineSymbolsForGroup (targetGroup , "CMCC");
-                PlayerSettings.applicationIdentifier = "com.lnv.bmw_i01wxgy";
-                targetScenes = GetEditorScenes (i01_wxgy_targetScenes);
-
-                break;
-
-            case "I12WXGY":
-                //PlayerSettings.applicationIdentifier = "com.game.cmcc";
-                //PlayerSettings.bundleVersion = "v0.0.1";
-                //PlayerSettings.SetScriptingDefineSymbolsForGroup (targetGroup , "CMCC");
-                PlayerSettings.applicationIdentifier = "com.lnv.bmw_i12wxgy";
-                targetScenes = GetEditorScenes (i12_wxgy_targetScenes);
-
-                break;
+                break;           
         }
 
         AssetDatabase.Refresh ();
@@ -512,7 +363,7 @@ public class BatchBuild : EditorWindow
         GenericBuild (targetScenes , target_dir + "/" + string.Concat("BMW_VR_", targetName, ".exe") , targetGroup , buildTarget , BuildOptions.None);
     }
 
-    private static string[] FindEnabledEditorScenes ()
+    private string[] FindEnabledEditorScenes ()
     {
         List<string> EditorScenes = new List<string> ();
         foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
@@ -524,40 +375,37 @@ public class BatchBuild : EditorWindow
         return EditorScenes.ToArray ();
     }
 
-    private static string[] GetEditorScenes (params string[] _targetScenes)
+    List<EditorBuildSettingsScene> cacheScenes;
+    private EditorBuildSettingsScene[] SetBuildScenes (params string[] _targetScenes)
     {
-        List<string> _editorScenes = new List<string> ();
-        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        cacheScenes = new List<EditorBuildSettingsScene> (EditorBuildSettings.scenes);
+
+        List<EditorBuildSettingsScene> _resultScenes = new List<EditorBuildSettingsScene> ();
+
+        bool _found = false;
+        foreach (string _scenePath in _targetScenes)
         {
-            if (scene == null || string.IsNullOrEmpty(scene.path) )
+            foreach (EditorBuildSettingsScene _editorScene in cacheScenes)
             {
-                continue;
-            }
-            int _startIdx = scene.path.LastIndexOf ('/');
-            int _endIdx = scene.path.LastIndexOf ('.');
-
-            if (_endIdx - _startIdx < 1)
-            {
-                continue;
-            }
-
-            string _str = scene.path.Substring (_startIdx + 1 , _endIdx - _startIdx - 1);
-
-            scene.enabled = false;
-            foreach (string item in _targetScenes)
-            {
-                if (item.Equals (_str))
+                if (_editorScene.path.Equals (_scenePath))
                 {
-                    scene.enabled = true;
-                    _editorScenes.Add (scene.path);
+                    _editorScene.enabled = true;
+                    _resultScenes.Add (_editorScene);
+
+                    _found = true;
                     break;
                 }
             }
+            if (!_found)
+            {
+                _resultScenes.Add (new EditorBuildSettingsScene (_scenePath , true));
+            }
         }
-        return _editorScenes.ToArray ();
+        EditorBuildSettings.scenes = _resultScenes.ToArray ();
+        return _resultScenes.ToArray ();
     }
 
-    static void GenericBuild (string[] scenes , string target_dir , BuildTargetGroup build_group,BuildTarget build_target , BuildOptions build_options)
+    void GenericBuild (EditorBuildSettingsScene[] scenes , string target_dir , BuildTargetGroup build_group,BuildTarget build_target , BuildOptions build_options)
     {
         if (EditorUserBuildSettings.activeBuildTarget == build_target)
         {
