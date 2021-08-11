@@ -407,6 +407,7 @@ public class BatchBuild : EditorWindow
             {
                 _resultScenes.Add (new EditorBuildSettingsScene (_scenePath , true));
             }
+            _found = false;
         }
         EditorBuildSettings.scenes = _resultScenes.ToArray ();
         return _resultScenes.ToArray ();
