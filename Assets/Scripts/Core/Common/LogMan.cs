@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections;
 using System.IO;
@@ -43,7 +43,13 @@ public class LogMan : MonoBehaviour
     public static FileStream _logFs = null;
 
     void InitFileStream()
-    {       
+    {
+
+        if ( _logFs != null )
+        {
+            return;
+        }
+
         #if UNITY_EDITOR
 
         if (!Directory.Exists(Application.persistentDataPath + @"/Log"))
