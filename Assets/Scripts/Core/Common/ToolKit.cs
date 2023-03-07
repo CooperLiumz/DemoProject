@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ToolKit : System.Object
 {
@@ -348,6 +349,38 @@ public class ToolKit : System.Object
             UnityEditor.EditorUtility.SetDirty (obj);
         }
         #endif
+    }
+
+
+    static public Texture2D TextureToTexture2d ( Texture texture )
+    {
+        RenderTexture prevRT = RenderTexture.active;
+
+        Texture2D texture2D = new Texture2D ( texture.width, texture.height );
+        if ( texture is RenderTexture )
+        {
+            RenderTexture.active = ( RenderTexture ) texture;
+            texture2D.ReadPixels ( new UnityEngine.Rect ( 0f, 0f, texture.width, texture.height ), 0, 0, false );
+            texture2D.Apply ( false, false );
+
+        }
+        else
+        {
+            RenderTexture tempRT = RenderTexture.GetTemporary ( texture.width, texture.height, 0, RenderTextureFormat.ARGB32 );
+            Graphics.Blit ( texture, tempRT );
+
+            RenderTexture.active = tempRT;
+            texture2D.ReadPixels ( new UnityEngine.Rect ( 0f, 0f, texture.width, texture.height ), 0, 0, false );
+            texture2D.Apply ( false, false );
+            RenderTexture.ReleaseTemporary ( tempRT );
+        }
+
+        RenderTexture.active = prevRT;
+
+        Sprite _sp = Sprite.Create ( texture2D, new Rect ( 0, 0, texture2D.width, texture2D.height ), new Vector2 ( 0.5f, 0.5f ) );
+
+        return texture2D;
+        //selfImage.sprite = _sp;
     }
 
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Text;
@@ -166,6 +166,49 @@ namespace ConsoleApp2
                 return "no";
             }
         }
+
+
+        bool isValid ( char[] commands, int len )
+        {
+            int x = 0, y = 0;
+            int direction = 0; // 0: north, 1: east, 2: south, 3: west
+
+            for ( int i = 0 ; i < len ; i++ )
+            {
+                char c = commands[ i ];
+                if ( c == 'R' )
+                {
+                    direction = ( direction + 1 ) % 4;
+                }
+                else if ( c == 'L' )
+                {
+                    direction = ( direction + 3 ) % 4;
+                }
+                else if ( c == 'S' )
+                {
+                    if ( direction == 0 )
+                    {
+                        y++;
+                    }
+                    else if ( direction == 1 )
+                    {
+                        x++;
+                    }
+                    else if ( direction == 2 )
+                    {
+                        y--;
+                    }
+                    else
+                    {
+                        x--;
+                    }
+                }
+            }
+
+            return x == 0 && y == 0;
+        }
+
+
 
         public static string[] getRandomCmd (int uc)
         { //测试数据
