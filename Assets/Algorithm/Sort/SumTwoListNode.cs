@@ -13,19 +13,21 @@ using UnityEngine;
 //输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
 //输出：7 -> 0 -> 8
 //原因：342 + 465 = 807
-public class ListNode
-{
-    public int val;
-    public ListNode next;
-    public ListNode (int x)
-    {
-        val = x;
-    }
-}
+
 
 
 public class SumTwoListNode : MonoBehaviour
 {
+    public class ListNode
+    {
+        public int val;
+        public ListNode next;
+        public ListNode ( int x )
+        {
+            val = x;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

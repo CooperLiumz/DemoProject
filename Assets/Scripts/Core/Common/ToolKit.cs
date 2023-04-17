@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.UI.CanvasScaler;
 
 public class ToolKit : System.Object
 {
@@ -383,4 +386,77 @@ public class ToolKit : System.Object
         //selfImage.sprite = _sp;
     }
 
+
+
+    #region 反射 通过变量获取变量名
+
+    // Type _type = _unit.GetType ( ); 
+    // _type.GetField
+
+    // Type t = Type.GetType(className);//通过string类型的className获得相同名称的类
+    // var obj = t.Assembly.CreateInstance ( className );//创建获取到的类的实例
+
+    // FieldInfo[] _fis = t.GetFields ( );
+    //foreach (FieldInfo item in _fis )
+    //{
+    //      Debug.LogError( $"FieldInfo===={item}==={item.Name}=={item.GetValue( obj )}" );
+    //}
+
+    ////没有参数的方法的调用
+    // MethodInfo method_1 = t.GetMethod ( methodName_1 );//通过string类型的methodName获得同名的方法
+    // method_1.Invoke(obj, null);//调用t类实例obj中的方法"TestStringToMethod_1"，第二个参数没有额外字段直接使用null
+
+    // 获取变量
+    // t.GetField
+    // 获取属性
+    // t.GetProperty
+
+    //    //有参数的方法的调用
+    // object[] parameters = new object[] { "测试", this.gameObject };//所有的参数丢进方法一起运行的字段,可以多个
+    // MethodInfo method_2 = t.GetMethod ( methodName_2 );
+    // method_2.Invoke(obj, parameters);//调用t类实例obj中的方法"TestStringToMethod_2"
+
+    // GetPropertyName< TestClass >(p=>p.ID)
+    // GetPropertyName< TestClass >(p=>p.Name)
+    // GetPropertyName< TestClass >(p=>p)
+    // id name public
+    public static string GetPropertyName<T> ( Expression<Func<T, object>> expr )
+    {
+        var rtn = "";
+        if ( expr.Body is UnaryExpression )
+        {
+            rtn = ( ( MemberExpression ) ( ( UnaryExpression ) expr.Body ).Operand ).Member.Name;
+        }
+        else if ( expr.Body is MemberExpression )
+        {
+            rtn = ( ( MemberExpression ) expr.Body ).Member.Name;
+        }
+        else if ( expr.Body is ParameterExpression )
+        {
+            rtn = ( ( ParameterExpression ) expr.Body ).Type.Name;
+        }
+        return rtn;
+    }
+
+    // string str = "asdada";
+    // GetPropertyName ( ( ) =>  str)
+    public static string GetPropertyName<T> ( Expression<Func<T>> expr )
+    {
+        var rtn = "";
+        if ( expr.Body is UnaryExpression )
+        {
+            rtn = ( ( MemberExpression ) ( ( UnaryExpression ) expr.Body ).Operand ).Member.Name;
+        }
+        else if ( expr.Body is MemberExpression )
+        {
+            rtn = ( ( MemberExpression ) expr.Body ).Member.Name;
+        }
+        else if ( expr.Body is ParameterExpression )
+        {
+            rtn = ( ( ParameterExpression ) expr.Body ).Type.Name;
+        }
+        return rtn;
+    }
+
+    #endregion
 }
