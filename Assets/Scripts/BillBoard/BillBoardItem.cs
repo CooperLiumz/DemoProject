@@ -1,4 +1,4 @@
-﻿using DG.Tweening;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,7 +30,8 @@ public class BillBoardItem : MonoBehaviour {
         }
         canvasGroup.alpha = 0f;
         rearrangeTransform.localPosition = new Vector3(0f,locaPositonY,0f);
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
+        //gameObject.SetActive(false);
     }
 
     //Billboard animation
@@ -52,7 +53,7 @@ public class BillBoardItem : MonoBehaviour {
 
     public void SetPosition(Vector3 localpositon)
     {
-        localpositon=new Vector3(2880f / Screen.width * localpositon.x, 2880f / Screen.width * localpositon.y, localpositon.z);
+        localpositon=new Vector3(1920 / Screen.width * localpositon.x, 1080 / Screen.height * localpositon.y, localpositon.z);
         cacheTransform.GetComponent<RectTransform>().anchoredPosition3D = localpositon;
     }
 

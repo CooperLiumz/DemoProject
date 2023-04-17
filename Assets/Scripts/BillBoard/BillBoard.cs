@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,13 +17,10 @@ public class BillBoard : MonoBehaviour {
     void Awake()
     {
         cacheTransform = this.transform;
-
-        EventCenter.BillBoardEvent.ShowBillBoardEvent += ShowBillBoard;
-        EventCenter.BillBoardEvent.SetBillBoardTargetEvent += SetBillBoardTarget;
     }
 
     //Instantiate the prefab of BillBoard
-    private void SetBillBoardTarget(Transform[] targetTfs)
+    public void SetBillBoardTarget(Transform[] targetTfs)
     {
         this.targetTfs = targetTfs;
         count = targetTfs.Length;
@@ -41,7 +38,7 @@ public class BillBoard : MonoBehaviour {
 
 
     //show BillBoard
-    private void ShowBillBoard(bool show)
+    public void ShowBillBoard(bool show)
     {
         showBillBoard = show;
         for (int i = 0; i < count; i++)
@@ -54,7 +51,7 @@ public class BillBoard : MonoBehaviour {
     {
         for (int i = 0; i < count; i++)
         {
-            Vector3 tempV3 = Global.Instance.mainCamera.WorldToScreenPoint(targetTfs[i].position);
+            Vector3 tempV3 = Camera.main.WorldToScreenPoint(targetTfs[i].position);
 
             //tempV3.x *= ScreenResize.Instance.activeWidth;
             //tempV3.y *= ScreenResize.Instance.activeHeight;
@@ -74,7 +71,5 @@ public class BillBoard : MonoBehaviour {
 
     void OnDestroy()
     {
-        EventCenter.BillBoardEvent.ShowBillBoardEvent += ShowBillBoard;
-        EventCenter.BillBoardEvent.SetBillBoardTargetEvent += SetBillBoardTarget;
     }
 }

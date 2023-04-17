@@ -10,14 +10,14 @@ using static UnityEngine.UI.CanvasScaler;
 
 public class ToolKit : System.Object
 {
-    static public DateTime StampToDateTime (long timeStamp)
+    static public DateTime StampToDateTime ( long timeStamp )
     {
-        DateTime dateTimeStart = TimeZone.CurrentTimeZone.ToLocalTime (new DateTime (1970 , 1 , 1));
-        long lTime = long.Parse (timeStamp + "0000000");
+        DateTime dateTimeStart = TimeZone.CurrentTimeZone.ToLocalTime ( new DateTime ( 1970, 1, 1 ) );
+        long lTime = long.Parse ( timeStamp + "0000000" );
 
-        TimeSpan toNow = new TimeSpan (lTime);
+        TimeSpan toNow = new TimeSpan ( lTime );
 
-        return dateTimeStart.Add (toNow);
+        return dateTimeStart.Add ( toNow );
     }
 
     #region 字符串转换为Vector
@@ -25,14 +25,14 @@ public class ToolKit : System.Object
     /// <summary>
     /// 将字符串转成Vector2
     /// </summary>
-    static public Vector2 StringParseToVector2 (string iptStr)
+    static public Vector2 StringParseToVector2 ( string iptStr )
     {
-        string[] strList = iptStr.Split (',');
-        if (strList.Length == 2)
+        string[] strList = iptStr.Split ( ',' );
+        if ( strList.Length == 2 )
         {
             Vector2 vct2 = Vector2.zero;
-            vct2.x = float.Parse (strList[0]);
-            vct2.y = float.Parse (strList[1]);
+            vct2.x = float.Parse ( strList[ 0 ] );
+            vct2.y = float.Parse ( strList[ 1 ] );
             return vct2;
         }
         else
@@ -44,15 +44,15 @@ public class ToolKit : System.Object
     /// <summary>
     /// 将字符串转成Vector3
     /// </summary>
-    static public Vector3 StringParseToVector3 (string iptStr)
+    static public Vector3 StringParseToVector3 ( string iptStr )
     {
-        string[] strList = iptStr.Split (',');
-        if (strList.Length == 3)
+        string[] strList = iptStr.Split ( ',' );
+        if ( strList.Length == 3 )
         {
             Vector3 vct3 = Vector3.zero;
-            vct3.x = float.Parse (strList[0]);
-            vct3.y = float.Parse (strList[1]);
-            vct3.z = float.Parse (strList[2]);
+            vct3.x = float.Parse ( strList[ 0 ] );
+            vct3.y = float.Parse ( strList[ 1 ] );
+            vct3.z = float.Parse ( strList[ 2 ] );
             return vct3;
         }
         else
@@ -61,20 +61,20 @@ public class ToolKit : System.Object
         }
     }
 
-    static public List<Vector3> StringParseToVector3List (string iptStr)
+    static public List<Vector3> StringParseToVector3List ( string iptStr )
     {
-        List<Vector3> result = new List<Vector3> ();
-        string[] strList = iptStr.Split (',');
+        List<Vector3> result = new List<Vector3> ( );
+        string[] strList = iptStr.Split ( ',' );
         int _lgh = strList.Length;
-        if (_lgh > 3)
+        if ( _lgh > 3 )
         {
-            for (int i = 0; i < _lgh;)
+            for ( int i = 0 ; i < _lgh ; )
             {
                 Vector3 vct3 = Vector3.zero;
-                vct3.x = float.Parse (strList[i]);
-                vct3.y = float.Parse (strList[i + 1]);
-                vct3.z = float.Parse (strList[i + 2]);
-                result.Add (vct3);
+                vct3.x = float.Parse ( strList[ i ] );
+                vct3.y = float.Parse ( strList[ i + 1 ] );
+                vct3.z = float.Parse ( strList[ i + 2 ] );
+                result.Add ( vct3 );
                 i += 3;
             }
         }
@@ -84,26 +84,26 @@ public class ToolKit : System.Object
     /// <summary>
     /// 将Vector3转成字符串
     /// </summary>
-    static public string Vector3ParseToString (Vector3 vect3)
+    static public string Vector3ParseToString ( Vector3 vect3 )
     {
         string _format = "{0},{1},{2}";
 
-        return string.Format (_format , vect3.x , vect3.y , vect3.z);
+        return string.Format ( _format, vect3.x, vect3.y, vect3.z );
     }
 
     /// <summary>
     /// 将字符串转成Vector4
     /// </summary>
-    static public Vector4 StringParseToVector4 (string iptStr)
+    static public Vector4 StringParseToVector4 ( string iptStr )
     {
-        string[] strList = iptStr.Split (',');
-        if (strList.Length == 4)
+        string[] strList = iptStr.Split ( ',' );
+        if ( strList.Length == 4 )
         {
             Vector4 vct4 = Vector4.zero;
-            vct4.x = float.Parse (strList[0]);
-            vct4.y = float.Parse (strList[1]);
-            vct4.z = float.Parse (strList[2]);
-            vct4.w = float.Parse (strList[3]);
+            vct4.x = float.Parse ( strList[ 0 ] );
+            vct4.y = float.Parse ( strList[ 1 ] );
+            vct4.z = float.Parse ( strList[ 2 ] );
+            vct4.w = float.Parse ( strList[ 3 ] );
             return vct4;
         }
         else
@@ -115,16 +115,16 @@ public class ToolKit : System.Object
     /// <summary>
     /// 将字符串转成Color
     /// </summary>
-    static public Vector4 StringParseToColor (string iptStr)
+    static public Vector4 StringParseToColor ( string iptStr )
     {
-        string[] strList = iptStr.Split (',');
-        if (strList.Length == 4)
+        string[] strList = iptStr.Split ( ',' );
+        if ( strList.Length == 4 )
         {
             Vector4 vct4 = Vector4.zero;
-            vct4.x = float.Parse (strList[0]) / 255;
-            vct4.y = float.Parse (strList[1]) / 255;
-            vct4.z = float.Parse (strList[2]) / 255;
-            vct4.w = float.Parse (strList[3]) / 255;
+            vct4.x = float.Parse ( strList[ 0 ] ) / 255;
+            vct4.y = float.Parse ( strList[ 1 ] ) / 255;
+            vct4.z = float.Parse ( strList[ 2 ] ) / 255;
+            vct4.w = float.Parse ( strList[ 3 ] ) / 255;
             return vct4;
         }
         else
@@ -141,13 +141,13 @@ public class ToolKit : System.Object
     /// color 转换hex
     /// </summary>
     /// <returns></returns>
-    static public string ColorToHex (Color color)
+    static public string ColorToHex ( Color color )
     {
-        int r = Mathf.RoundToInt (color.r * 255.0f);
-        int g = Mathf.RoundToInt (color.g * 255.0f);
-        int b = Mathf.RoundToInt (color.b * 255.0f);
-        int a = Mathf.RoundToInt (color.a * 255.0f);
-        string hex = string.Format ("{0:X2}{1:X2}{2:X2}{3:X2}" , r , g , b , a);
+        int r = Mathf.RoundToInt ( color.r * 255.0f );
+        int g = Mathf.RoundToInt ( color.g * 255.0f );
+        int b = Mathf.RoundToInt ( color.b * 255.0f );
+        int a = Mathf.RoundToInt ( color.a * 255.0f );
+        string hex = string.Format ( "{0:X2}{1:X2}{2:X2}{3:X2}", r, g, b, a );
         return hex;
     }
 
@@ -156,28 +156,28 @@ public class ToolKit : System.Object
     /// hex == #FFFFFFFF
     /// </summary>
     /// <returns></returns>
-    static public Color HexToColor (string hex)
+    static public Color HexToColor ( string hex )
     {
-        if (hex.StartsWith ("#"))
+        if ( hex.StartsWith ( "#" ) )
         {
-            hex = hex.Substring (1 , hex.Length - 1);
+            hex = hex.Substring ( 1, hex.Length - 1 );
         }
 
-        byte br = byte.Parse (hex.Substring (0 , 2) , System.Globalization.NumberStyles.HexNumber);
-        byte bg = byte.Parse (hex.Substring (2 , 2) , System.Globalization.NumberStyles.HexNumber);
-        byte bb = byte.Parse (hex.Substring (4 , 2) , System.Globalization.NumberStyles.HexNumber);
+        byte br = byte.Parse ( hex.Substring ( 0, 2 ), System.Globalization.NumberStyles.HexNumber );
+        byte bg = byte.Parse ( hex.Substring ( 2, 2 ), System.Globalization.NumberStyles.HexNumber );
+        byte bb = byte.Parse ( hex.Substring ( 4, 2 ), System.Globalization.NumberStyles.HexNumber );
         float r = br / 255f;
         float g = bg / 255f;
         float b = bb / 255f;
         float a = 255 / 255f;
 
-        if (hex.Length >= 8)
+        if ( hex.Length >= 8 )
         {
-            byte cc = byte.Parse (hex.Substring (6 , 2) , System.Globalization.NumberStyles.HexNumber);
+            byte cc = byte.Parse ( hex.Substring ( 6, 2 ), System.Globalization.NumberStyles.HexNumber );
             a = cc / 255f;
         }
 
-        return new Color (r , g , b , a);
+        return new Color ( r, g, b, a );
     }
 
     #endregion
@@ -186,34 +186,34 @@ public class ToolKit : System.Object
 
 
     //列表转字典
-    static public List<T> DictToList<T> (Dictionary<string , T> dict) where T : class
+    static public List<T> DictToList<T> ( Dictionary<string, T> dict ) where T : class
     {
-        List<T> result = new List<T> ();
-        foreach (KeyValuePair<string , T> kvp in dict)
+        List<T> result = new List<T> ( );
+        foreach ( KeyValuePair<string, T> kvp in dict )
         {
-            result.Add (kvp.Value);
+            result.Add ( kvp.Value );
         }
         return result;
     }
 
     //列表转字典
-    static public List<T> LongDictToList<T> (Dictionary<long , T> dict) where T : class
+    static public List<T> LongDictToList<T> ( Dictionary<long, T> dict ) where T : class
     {
-        List<T> result = new List<T> ();
-        foreach (KeyValuePair<long , T> kvp in dict)
+        List<T> result = new List<T> ( );
+        foreach ( KeyValuePair<long, T> kvp in dict )
         {
-            result.Add (kvp.Value);
+            result.Add ( kvp.Value );
         }
         return result;
     }
 
     //列表转字典
-    static public List<T> IntDictToList<T> (Dictionary<int , T> dict) where T : class
+    static public List<T> IntDictToList<T> ( Dictionary<int, T> dict ) where T : class
     {
-        List<T> result = new List<T> ();
-        foreach (KeyValuePair<int , T> kvp in dict)
+        List<T> result = new List<T> ( );
+        foreach ( KeyValuePair<int, T> kvp in dict )
         {
-            result.Add (kvp.Value);
+            result.Add ( kvp.Value );
         }
         return result;
     }
@@ -223,17 +223,17 @@ public class ToolKit : System.Object
 
     #region json
 
-    static public string StringDictToNewWorkJson (Dictionary<string , string> paramDict)
+    static public string StringDictToNewWorkJson ( Dictionary<string, string> paramDict )
     {
         string _result = "{";
 
         int _count = paramDict.Count;
         int _index = 0;
-        foreach (KeyValuePair<string , string> kvp in paramDict)
+        foreach ( KeyValuePair<string, string> kvp in paramDict )
         {
-            _result += string.Format ("\"{0}\":\"{1}\"" , kvp.Key , kvp.Value);
+            _result += string.Format ( "\"{0}\":\"{1}\"", kvp.Key, kvp.Value );
             _index++;
-            if (_index < _count)
+            if ( _index < _count )
             {
                 _result += ",";
             }
@@ -250,28 +250,28 @@ public class ToolKit : System.Object
     #region 动画
 
     // 添加动画事件
-    public void AddAnimationEvent (AnimationClip _clip)
+    public void AddAnimationEvent ( AnimationClip _clip )
     {
-        _clip.events = new AnimationEvent[0];
+        _clip.events = new AnimationEvent[ 0 ];
 
-        AnimationEvent _event = new AnimationEvent ();
+        AnimationEvent _event = new AnimationEvent ( );
         _event.functionName = "CallBack";
         _event.time = 0;
-        _clip.AddEvent (_event);
+        _clip.AddEvent ( _event );
     }
 
     // 动画正倒播
-    public void PlayAnimationBack (Animation _animation, AnimationState _animationState)
+    public void PlayAnimationBack ( Animation _animation, AnimationState _animationState )
     {
         // 倒播
         _animationState.speed = -1;
         _animationState.time = _animationState.length;
-        _animation.Play ();
+        _animation.Play ( );
 
         // 正播
         _animationState.speed = 1;
         _animationState.time = 0;
-        _animation.Play ();
+        _animation.Play ( );
 
         //_animation["name"].speed = 1;
         //_animation["name"].time = 1;
@@ -282,7 +282,7 @@ public class ToolKit : System.Object
 
     #region 添加监听
 
-    public void AddListentr ()
+    public void AddListentr ( )
     {
 
         //EventTrigger _trigger = gameObject.AddComponent<EventTrigger> ();
@@ -318,40 +318,40 @@ public class ToolKit : System.Object
 
 
 
-    static public T FindInParents<T> (Transform trans) where T : Component
+    static public T FindInParents<T> ( Transform trans ) where T : Component
     {
-        if (trans == null)
+        if ( trans == null )
             return null;
-        #if UNITY_FLASH
+#if UNITY_FLASH
 		object comp = trans.GetComponent<T>();
-        #else
-        T comp = trans.GetComponent<T> ();
-        #endif
-        if (comp == null)
+#else
+        T comp = trans.GetComponent<T> ( );
+#endif
+        if ( comp == null )
         {
             Transform t = trans.transform.parent;
 
-            while (t != null && comp == null)
+            while ( t != null && comp == null )
             {
-                comp = t.gameObject.GetComponent<T> ();
+                comp = t.gameObject.GetComponent<T> ( );
                 t = t.parent;
             }
         }
-        #if UNITY_FLASH
+#if UNITY_FLASH
 		return (T)comp;
-        #else
+#else
         return comp;
-        #endif
+#endif
     }
 
-    static public void SetDirty (UnityEngine.Object obj)
+    static public void SetDirty ( UnityEngine.Object obj )
     {
-        #if UNITY_EDITOR
-        if (obj)
+#if UNITY_EDITOR
+        if ( obj )
         {
-            UnityEditor.EditorUtility.SetDirty (obj);
+            UnityEditor.EditorUtility.SetDirty ( obj );
         }
-        #endif
+#endif
     }
 
 
@@ -420,6 +420,7 @@ public class ToolKit : System.Object
     // GetPropertyName< TestClass >(p=>p.Name)
     // GetPropertyName< TestClass >(p=>p)
     // id name public
+    // 通过变量获取变量名
     public static string GetPropertyName<T> ( Expression<Func<T, object>> expr )
     {
         var rtn = "";
@@ -459,4 +460,29 @@ public class ToolKit : System.Object
     }
 
     #endregion
+
+    #region 空格换行问题 将空格替换为不换行空格
+
+    static public void ReplaceSpace (string _str )
+    {
+        _str.Replace (" ", "\u00A0" );//不换行空格的Unicode编码
+    }
+
+    #endregion
+
+
+    #region 正则表达式
+
+    // 字母和数字组成的字符串，必须还有字母
+    //string pattern = @"^(?=.*[a-zA-Z])[a-zA-Z0-9]+$";
+    
+    //字母和数字组成的字符串
+    //string pattern = @"^[a-zA-Z0-9]*$";
+     
+    //筛选数字
+    //@"[^0-9]+"
+
+    #endregion
+
+
 }
