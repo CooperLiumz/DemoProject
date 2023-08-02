@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -475,14 +476,56 @@ public class ToolKit : System.Object
 
     // 字母和数字组成的字符串，必须还有字母
     //string pattern = @"^(?=.*[a-zA-Z])[a-zA-Z0-9]+$";
-    
+
     //字母和数字组成的字符串
     //string pattern = @"^[a-zA-Z0-9]*$";
-     
+
     //筛选数字
     //@"[^0-9]+"
 
     #endregion
 
 
+    #region 文件处理
+
+    // Directory.Exists ( _srcPath, true )
+    // 打开文件夹
+    // System.Diagnostics.Process.Start ( _tgtPath );
+
+    private void Copy2TargetDir ( string _srcPath, string _tgtPath )
+    {
+        if ( Directory.Exists ( _srcPath ) )
+        {
+            if ( !Directory.Exists ( _tgtPath ) )
+            {
+                try
+                {
+                    Directory.CreateDirectory ( _tgtPath );
+                }
+                catch ( Exception ex )
+                {
+                    Debug.LogError ( "创建失败" );
+                }
+            }
+
+            List<string> files = new List<string> ( Directory.GetFiles ( _srcPath ) );
+            files.ForEach ( c =>
+            {
+                string destFile = Path.Combine ( _tgtPath, Path.GetFileName ( c ) );
+                File.Copy ( c, destFile, true );
+            } );
+            List<string> folders = new List<string> ( Directory.GetDirectories ( _srcPath ) );
+            folders.ForEach ( c =>
+            {
+                string destDir = Path.Combine ( _tgtPath, Path.GetFileName ( c ) );
+                Copy2TargetDir ( c, destDir );
+            } );
+        }
+        else
+        {
+            Debug.LogError ( "源目录不存在" );
+        }
+    }
+
+    #endregion
 }

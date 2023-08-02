@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,9 +34,9 @@ public class RaycastSector : MonoBehaviour
 
             Look3 ();
         }
-        
-        //Debug.DrawRay (transform.position , transform.forward.normalized *10, Color.green);
-        //Debug.DrawLine (transform.position , new Vector3 (10 , 10 , 10) , Color.red);
+
+        //Debug.DrawRay ( transform.position, transform.forward.normalized * 10, Color.green );
+        //Debug.DrawLine ( transform.position, new Vector3 ( 10, 10, 10 ), Color.red );
     }
 
     //放射线检测
