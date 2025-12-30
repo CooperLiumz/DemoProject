@@ -7,7 +7,11 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.UI.CanvasScaler;
+
+// add 
+// subtract
+// multipy
+// divide 
 
 public class ToolKit : System.Object
 {
@@ -526,6 +530,106 @@ public class ToolKit : System.Object
             Debug.LogError ( "源目录不存在" );
         }
     }
+
+    #endregion
+
+
+    #region 时间戳
+
+    /// <summary>
+    /// 获取时间戳-单位秒
+    /// </summary>
+    /// <returns></returns>
+    public long GetTimeStampSecond ( )
+    {
+        TimeSpan ts = DateTime.UtcNow - new DateTime ( 1970, 1, 1, 0, 0, 0, 0 );
+        try
+        {
+            return Convert.ToInt64 ( ts.TotalSeconds );
+        }
+        catch (Exception ex)
+        {
+            Debug.Log ( $"GetTimeStampSecond Error = {ex}" );
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// 获取时间戳-单位毫秒
+    /// </summary>
+    /// <returns></returns>
+    public long GetTimeStampMilliSecond ( )
+    {
+        TimeSpan ts = DateTime.UtcNow - new DateTime ( 1970, 1, 1, 0, 0, 0, 0 );
+        try
+        {
+            return Convert.ToInt64 ( ts.TotalMilliseconds );
+        }
+        catch (Exception ex)
+        {
+            Debug.Log ( $"GetTimeStampMilliSecond Error = {ex}" );
+            return 0;
+        }
+    }
+
+    /// <summary>
+    /// 将秒数时间戳转换为多久之前。传入时间戳t(t= 当前时间戳() - 指定时间的时间戳 )
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    public string GetTimeLongAgo ( double t )
+    {
+        string str = "";
+        double num;
+        if (t < 60)
+        {
+            str = string.Format ( "{0}秒前", t );
+        }
+        else if (t >= 60 && t < 3600)
+        {
+            num = Math.Floor ( t / 60 );
+            str = string.Format ( "{0}分钟前", num );
+        }
+        else if (t >= 3600 && t < 86400)
+        {
+            num = Math.Floor ( t / 3600 );
+            str = string.Format ( "{0}小时前", num );
+        }
+        else if (t > 86400 && t < 2592000)
+        {
+            num = Math.Floor ( t / 86400 );
+            str = string.Format ( "{0}天前", num );
+        }
+        else if (t > 2592000 && t < 31104000)
+        {
+            num = Math.Floor ( t / 2592000 );
+            str = string.Format ( "{0}月前", num );
+        }
+        else
+        {
+            num = Math.Floor ( t / 31104000 );
+            str = string.Format ( "{0}年前", num );
+        }
+        return str;
+    }
+
+    ////方法一
+    //TimeSpan st = DateTime.UtcNow - new DateTime ( 1970, 1, 1, 0, 0, 0 );
+    //Debug.Log("日期转为时间戳:"+Convert.ToInt64(st.TotalMilliseconds));
+        
+    ////方法二
+    //double timeStamp = ((DateTime.Now.ToUniversalTime ( ).Ticks - 621355968000000000) / 10000);
+    //Debug.Log("日期转为时间戳:" + timeStamp);
+
+    ////方法一
+    //DateTime startTime = TimeZoneInfo.ConvertTime ( new DateTime ( 1970, 1, 1, 0, 0, 0, DateTimeKind.Utc ), TimeZoneInfo.Local );
+    //DateTime dt = startTime.AddMilliseconds ( st );//st为传入的时间戳
+    //Debug.Log("时间戳转时间:" + dt);
+        
+    ////方法二
+    //DateTime startTime1 = new DateTime ( 1970, 1, 1, 0, 0, 0, DateTimeKind.Utc );
+    //DateTime dt1 = startTime1.AddMilliseconds ( st );//st为传入的时间戳
+    //Debug.Log("时间戳转时间:" + dt);
 
     #endregion
 }
